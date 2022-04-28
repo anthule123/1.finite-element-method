@@ -6,3 +6,4 @@ Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
     
     Bài 2. Với mỗi điểm trong lưới, xây dựng hàm tuyến tính dạng "chóp", giống như 1 kim tự tháp nhô
            lên tại điểm đó và bằng 0 tại các điểm kề với nó.
+           file : draw3.ipynb
