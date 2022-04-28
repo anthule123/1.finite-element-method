@@ -16,6 +16,6 @@ Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
            f2: = 1 tại điểm 2 và = 0 tại điểm 1 và 3
            f3: = 1 tại điểm 3 và = 0 tại điểm 1 và 2
   Tính ma trận (a(f_i,f_j))  = (f_i', f_j')   
-           
+           file: cal1.ipynb
           
          
