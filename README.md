@@ -19,6 +19,15 @@ Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
            file: cal1.ipynb
          
  Bước 3: Nối các ma trận phần tử để được ma trận toàn cục
+ 
+      VD: N = 3. Chia ra 9 đỉnh, 4*2   tam giác như trong hình vẽ
       
+          Có 9 hàm kim tự tháp, là cơ sở của hệ phần tử hữu hạn,
+           tương ứng với 9 đỉnh.
+           Giả sử đỉnh 1 và đỉnh 2 cùng kề với đỉnh 3, 
+            thì kim tự tháp ứng với đỉnh 1 và kim tự tháp ứng với đỉnh 2 sẽ 
+            có phần tam giác(1,2,3) chung nhau, tính được ma trận phần tử tương ứng.
+            
+          Cuối cùng, cộng tất cả các ma trận phần tử đó lại, ta đc ma trận toàn cục.
           
          
