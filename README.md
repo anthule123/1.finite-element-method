@@ -28,6 +28,8 @@ Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
             thì kim tự tháp ứng với đỉnh 1 và kim tự tháp ứng với đỉnh 2 sẽ 
             có phần tam giác(1,2,3) chung nhau, tính được ma trận phần tử tương ứng.
             
-          Cuối cùng, cộng tất cả các ma trận phần tử đó lại, ta đc ma trận toàn cục.
+          Cuối cùng, cộng tất cả các ma trận phần tử đó lại, ta đc ma trận toàn cục. 
+        
+        file : draw6.ipynb
           
          
