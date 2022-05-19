@@ -1,4 +1,5 @@
 # finite-element-method
+FEM
 
 Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
 
@@ -31,5 +32,7 @@ Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
           Cuối cùng, cộng tất cả các ma trận phần tử đó lại, ta đc ma trận toàn cục. 
         
         file : draw6.ipynb
+        
+ Part 2: tính xấp xỉ tích phân 1 hàm số trên miền tam giác : cầu phương Gauss
           
          
