@@ -34,5 +34,8 @@ Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
         file : draw6.ipynb
         
  Part 2: tính xấp xỉ tích phân 1 hàm số trên miền tam giác : cầu phương Gauss
-          
+ 
+        b1: tính trên đoạn 1D: https://rosettacode.org/wiki/Numerical_integration/Gauss-Legendre_Quadrature
+        b2: tính trên hình chữ nhật 2D: 
+        b3: tính trên tam giác ?!
          
