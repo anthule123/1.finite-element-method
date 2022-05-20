@@ -37,8 +37,9 @@ Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
  
         b1: tính trên đoạn 1D: 
         https://rosettacode.org/wiki/Numerical_integration/Gauss-Legendre_Quadrature
+        file : gauss quadrature.ipynb
         
         b2: tính trên hình chữ nhật 2D: 
             tính trên tứ giác bất kì
-        b3: tính trên tam giác ?! https://silo.tips/queue/quadrature-formulas-in-two-dimensions-math-finite-element-method-section-001-spr?&queue_id=-1&v=1653006217&u=MTIzLjE2LjUuMTkz
+        b3: tính trên tam giác  https://silo.tips/queue/quadrature-formulas-in-two-dimensions-math-finite-element-method-section-001-spr?&queue_id=-1&v=1653006217&u=MTIzLjE2LjUuMTkz
          
