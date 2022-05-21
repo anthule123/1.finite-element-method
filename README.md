@@ -42,4 +42,7 @@ Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
         b2: tính trên hình chữ nhật 2D: 
             tính trên tứ giác bất kì
         b3: tính trên tam giác  https://silo.tips/queue/quadrature-formulas-in-two-dimensions-math-finite-element-method-section-001-spr?&queue_id=-1&v=1653006217&u=MTIzLjE2LjUuMTkz
+            Dùng luôn công thức bậc 5 vì hàm phần tử hữu hạn ta chỉ cần đến bậc 2:
+            Sử dụng công thức đổi tọa độ để đưa tọa độ tam giác bất kì về tam giác (0,0), (1,0), (0,1).
+            
          
