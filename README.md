@@ -44,5 +44,10 @@ Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
         b3: tính trên tam giác  https://silo.tips/queue/quadrature-formulas-in-two-dimensions-math-finite-element-method-section-001-spr?&queue_id=-1&v=1653006217&u=MTIzLjE2LjUuMTkz
             Dùng luôn công thức bậc 5 vì hàm phần tử hữu hạn ta chỉ cần đến bậc 2:
             Sử dụng công thức đổi tọa độ để đưa tọa độ tam giác bất kì về tam giác (0,0), (1,0), (0,1).
+            Công thức 7 điểm ở file trên bị sai nên mình chuyển sang dùng
+            Công thức 14 điểm ở https://zhilin.math.ncsu.edu/TEACHING/MA587/Gaussian_Quadrature2D.pdf
+        Có được thư viện tính tích phân trên đoạn [(x1,y1),(x2,y2)] và trên tam giác.
+        file : gaus_quadrature_lib.py
+            
             
          
