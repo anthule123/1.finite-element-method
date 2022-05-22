@@ -1,135 +1,74 @@
 # %%
+import numpy as np
 from numpy import *
- 
-##################################################################
-# Recursive generation of the Legendre polynomial of order n
-def Legendre(n,x):
-	x=array(x)
-	if (n==0):
-	    return x*0+1.0
-	elif n==1:
-		return x
-	else:
-		return ((2.0*n-1.0)*x*Legendre(n-1,x)-(n-1)*Legendre(n-2,x))/n
- 
-
-# %%
-# Derivative of the Legendre polynomials
-def DLegendre(n,x):
-    x=array(x)
-    if n==0:
-	    return x*0
-    elif (n==1):
-        return x*0+1.0
-    else:
-        return (n/(x**2-1.0))*(x*Legendre(n,x)-Legendre(n-1,x))
-
-# %%
-# Roots of the polynomial obtained using Newton-Raphson method
-def LegendreRoots(polyorder,tolerance=1e-20):
-    if polyorder<2:
-        err = 1        # bad polyorder no roots can be found
-    else:
-        roots=[]
-		# The polynomials are alternately even and odd functions. So we evaluate only half the number of roots. 
-        for i in range(1, int(polyorder/2) +1):
-            x = cos(pi*(i-0.25)/(polyorder+0.5))
-            error = 10*tolerance
-            iters = 0
-            while (error>tolerance) and (iters<1000):
-                dx=-Legendre(polyorder,x)/DLegendre(polyorder,x)
-                x=x+dx
-                iters=iters+1
-                error=abs(dx)  
-            roots.append(x)
-		# Use symmetry to get the other roots
-        roots=array(roots)
-        if polyorder%2==0:
-            roots=concatenate( (-1.0*roots, roots[::-1]) )
-        else:
-            roots=concatenate( (-1.0*roots, [0.0], roots[::-1]) )
-        err=0 # successfully determined roots
-        return [roots, err]
-
-# %%
-# Weight coefficients
-def GaussLegendreWeights(polyorder):
-	W=[]
-	[xis,err]=LegendreRoots(polyorder)
-	if err==0:
-		W=2.0/( (1.0-xis**2)*(DLegendre(polyorder,xis)**2) )
-		err=0
-	else:
-		err=1 # could not determine roots - so no weights
-	return [W, xis, err]
-
-# %%
-# The integral value 
-# func 		: the integrand
-# a, b 		: lower and upper limits of the integral
-# polyorder 	: order of the Legendre polynomial to be used
-#
-def GaussLegendreQuadrature(func, polyorder, a, b):
-	[Ws,xs, err]= GaussLegendreWeights(polyorder)
-	if err==0:
-		ans=(b-a)*0.5*sum( Ws*func( (b-a)*0.5*xs+ (b+a)*0.5 ) )
-	else: 
-		# (in case of error)
-		err=1
-		ans=None
-	return [ans,err]
-##################################################################
-# The integrand - change as required
-def func(x):
-	return exp(x)
-##################################################################
-# 
-
-# %%
-order = 5
-[Ws,xs,err] = GaussLegendreWeights(order)
-if err==0:
-	print ("Order    : ", order)
-	print ("Roots    : ", xs)
-	print ("Weights  : ", Ws)
-else:
-	print ("Roots/Weights evaluation failed")
- 
-# Integrating the function
-[ans,err]=GaussLegendreQuadrature(func , order, -3,3)
-if err==0:
-	print ("Integral : ", ans)
-else:
-	print ("Integral evaluation failed")
-
-# %%
-Ws.shape
-
-# %%
-def func2 (x):
-    return x**4
-
-# %%
-[ans,err]=GaussLegendreQuadrature(func2 , order, -3,3)
-if err==0:
-	print ("Integral : ", ans)
-else:
-	print ("Integral evaluation failed")
-
-# %%
-import numpy as np 
 import matplotlib.pyplot as plt
-x = np.linspace(-1,1,100)
-y = Legendre(5,x)
-plt.plot(x,y)
 
 # %%
-yroot = np.zeros(10)
-[xroot,er] = LegendreRoots(10)
-
+def integrate_gauss_quad_segment(function, x1,y1,x2,y2):
+    x_root = [-0.906179845938664,
+                -0.5384693101056831 ,
+                0.0,
+                0.5384693101056831,
+                0.906179845938664 ]
+    weight = [0.2369268850561891,
+                0.47862867049936647,
+              0.5688888888888889,
+              0.47862867049936647,
+                0.2369268850561891 ]
+    sum = 0
+    dai = np.linalg.norm([x1-x2,y1-y2])
+    for i in range(0,5):
+        ti_le = (x_root[i]+1)/2
+        x = x1* (1-ti_le) + x2 * ti_le
+        y = y1* (1-ti_le) + y2 * ti_le
+        sum +=  dai * function(x,y) *weight[i]*0.5
+    return sum
 
 # %%
-#plt.plot(xroot,yroot, marker = 'o')
-plt.plot(xroot,yroot,marker = 'o')
+def det(x_val,y_val,x1,y1,x2,y2):
+    return (x1-x_val)*(y2-y_val) - (x2-x_val)*(y1-y_val)
+
+# %%
+def integrate_gauss_quad_triangle(function, x1,y1,x2,y2,x3,y3):
+    x_quad = np.zeros((14,2))
+
+    x_quad[0]=[6.943184420297371E-002,       4.365302387072518E-002]
+    x_quad[1]=[6.943184420297371E-002,      0.214742881469342]
+    x_quad[2]= [6.943184420297371E-002,        0.465284077898513]
+    x_quad[3]=[6.943184420297371E-002,     0.715825274327684]
+    x_quad[4]=[6.943184420297371E-002,       0.886915131926301]
+    x_quad[5]=[0.330009478207572,         4.651867752656094E-002]
+    x_quad[6]=[0.330009478207572,         0.221103222500738]
+    x_quad[7] = [0.330009478207572,        0.448887299291690      ]
+    x_quad[8] = [0.330009478207572,        0.623471844265867]
+    x_quad[9] =[0.669990521792428,        3.719261778493340E-002]
+    x_quad[10]=[0.669990521792428,        0.165004739103786]
+    x_quad[11]=[0.669990521792428,        0.292816860422638]
+    x_quad[12]=[0.930568155797026,        1.467267513102734E-002]
+    x_quad[13]=[0.930568155797026,       5.475916907194637E-002]
+    weight_quad = [ 1.917346464706755E-002,
+                3.873334126144628E-002,
+                4.603770904527855E-002,
+                3.873334126144628E-002,
+                1.917346464706755E-002,
+                3.799714764789616E-002,
+                7.123562049953998E-002,
+                7.123562049953998E-002,
+                3.799714764789616E-002,
+                2.989084475992800E-002,
+                4.782535161588505E-002,
+                2.989084475992800E-002,
+                6.038050853208200E-003,
+                6.038050853208200E-003]
+    sum = 0
+    for i in range(0,14):
+        x = x1*(1-x_quad[i,0] - x_quad[i,1]) +x2*x_quad[i,0] + x3*x_quad[i,1]
+        y = y1*(1-x_quad[i,0] - x_quad[i,1]) +y2*x_quad[i,0] + y3*x_quad[i,1]
+        sum += function(x,y) * weight_quad[i]
+    sum*= abs(det(x1,y1,x2,y2,x3,y3))
+    return sum
+
+# %%
+
 
 
