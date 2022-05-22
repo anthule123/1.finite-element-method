@@ -48,6 +48,21 @@ Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
             Công thức 14 điểm ở https://zhilin.math.ncsu.edu/TEACHING/MA587/Gaussian_Quadrature2D.pdf
         Có được thư viện tính tích phân trên đoạn [(x1,y1),(x2,y2)] và trên tam giác.
         file : gaus_quadrature_lib.py
-            
+Part 3: Thiết lập 2 loại ko gian phần tử hữu hạn:
+
+    Loại 1: tuyến tính hình kim tự tháp
+    Loại 2: dạng bậc 2
+
+Part 4: Thiết lập điều kiện biên :
+
+    1.Cho hình chữ nhật [0,1] x [0,1]
+         Tạo 1 hàm là sự kết hợp của đa thức + sin,cos, exp
+         Tính đạo hàm, Laplace và đạo hàm theo hướng tại biên để ra đk Dirichlet ở nửa trái 
+         và đk Neumann ở nửa phải.
+    2.Thiết lập hệ phương trình bự - toàn cục
+         Rồi trừ đi các phần phụ thuộc,...
+         Ra được ma trận rút gọn
+         Giải ma trận rút gọn
+ Part 5: Giải ma trận thưa
             
          
