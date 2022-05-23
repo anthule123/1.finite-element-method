@@ -63,6 +63,8 @@ Part 4: Thiết lập điều kiện biên :
          Rồi trừ đi các phần phụ thuộc,...
          Ra được ma trận rút gọn
          Giải ma trận rút gọn
+         
+     Thử nghiệm với hàm f(x,y) = x(1-x)y(2-y)
  Part 5: Giải ma trận thưa
             
          
