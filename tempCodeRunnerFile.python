@@ -1,13 +1,18 @@
 # %%
 import numpy as np
+from numpy import *
 import matplotlib.pyplot as plt
 import gauss_quad_lib 
-import element_lib2
+import element_lib
 from mpl_toolkits.mplot3d import Axes3D
+plt.rcdefaults()
 
+# set the axes color glbally for all plots
+
+plt.rcParams.update({'axes.facecolor':'white'})
 
 # %%
-N= 10
+N= 20
 [a,b,c,d] = [0,1,0,1]
 di = (b-a)/N
 dj = (d-c)/N
@@ -67,7 +72,7 @@ for i in range(0, so_tam_giac):
             if(Dirichlet[p1]==0 and Dirichlet[p2]==0):
                 q1 = int(independ_re_index[p1])
                 q2 = int(independ_re_index[p2])                
-                val= element_lib2.Element_Stiff(nut[p1][0],nut[p1][1],
+                val= element_lib.Element_Stiff(nut[p1][0],nut[p1][1],
                                                                        nut[p2][0],nut[p2][1],
                                                                      nut[p3][0],nut[p3][1])
                 Global_matrix_vt[q1][q2] +=val
@@ -90,7 +95,7 @@ for i in range(0, so_tam_giac):
             if(j==2):
                 p2 = int(triangle[i][1])  
                 p3 = int(triangle[i][0])     
-            val= element_lib2.Element_Stiff_self(nut[p1][0],nut[p1][1],
+            val= element_lib.Element_Stiff_self(nut[p1][0],nut[p1][1],
                                                                        nut[p2][0],nut[p2][1],
                                                                      nut[p3][0],nut[p3][1])
             q1 = int(independ_re_index[p1])
@@ -110,15 +115,8 @@ np.linalg.matrix_rank (Global_matrix_vt)
 Global_matrix_vt
 
 # %%
-b =[1,2,3,4]
-x = np.linalg.solve(Global_matrix_vt,b)
+f = lambda x,y: x*y*pi^2*sin(pi*(x - 1))*(y - 1) - 2*pi*y*cos(pi*(x - 1))*(y - 1) - 2*x*sin(pi*(x - 1))
 
-# %%
-b =[1,2,3,4]
-x = np.linalg.solve(Global_matrix_vt,b)
-
-# %%
-f = lambda x,y: -2*x*(x-1) -2*y*(y-1)
 
 # %%
 ve_phai = np.zeros(run)
@@ -137,7 +135,7 @@ for i in range(0, so_tam_giac):
             if(j==2):
                 p2 = int(triangle[i][1])  
                 p3 = int(triangle[i][0])     
-            phi= element_lib2.Element_Linear_Polynomial(nut[p1][0],nut[p1][1],
+            phi= element_lib.Element_Linear_Polynomial(nut[p1][0],nut[p1][1],
                                                                        nut[p2][0],nut[p2][1],
                                                                      nut[p3][0],nut[p3][1])
             q1 = int(independ_re_index[p1])
@@ -163,6 +161,62 @@ for i in range(0, so_nut):
 plt.show()
 
 # %%
+vui = np.array([1,2,3,4])
+vui = vui*3
+vui
 
+# %%
+#error
+ve_phai = np.zeros(run)
+def u_analytic(x,y):
+    return x*(x-1)*y*(y-1)
+def u_analytic2(x,y):
+    return (x*(x-1)*y*(y-1))**2
+error2 = 0
+integral_unalytic = 0
+for i in range(0, so_tam_giac):
+    r1 = int(triangle[i][0])
+    r2 = int(triangle[i][1])
+    r3 = int(triangle[i][2])
+    coef = np.zeros(3)
+    for j in range(0, 3):
+        p1 = int(triangle[i][j])
+        if(Dirichlet[p1]==0):
+            p2=0
+            p3=0
+            if(j==0):
+                p2 = int(triangle[i][1])  
+                p3 = int(triangle[i][2])  
+            if(j==1):
+                p2 = int(triangle[i][0])  
+                p3 = int(triangle[i][2]) 
+            if(j==2):
+                p2 = int(triangle[i][1])  
+                p3 = int(triangle[i][0])     
+            q1 = int(independ_re_index[p1])
+            coef += np.array(element_lib.Element_Linear_Polynomial_coef(nut[p1][0],nut[p1][1],
+                                                                       nut[p2][0],nut[p2][1],
+                                                                     nut[p3][0],nut[p3][1]))*u_cord[q1]
+    error_con = lambda x,y: (coef[0]*x + coef[1]*y + coef[2]-u_analytic(x,y))**2
+    integral_unalytic += gauss_quad_lib.integrate_gauss_quad_triangle(u_analytic2,nut[r1][0],nut[r1][1],
+                                                                       nut[r2][0],nut[r2][1],
+                                                                     nut[r3][0],nut[r3][1])
+    error2 += gauss_quad_lib.integrate_gauss_quad_triangle(error_con,nut[r1][0],nut[r1][1],
+                                                                       nut[r2][0],nut[r2][1],
+                                                                     nut[r3][0],nut[r3][1])
+
+
+# %%
+np.sqrt(error2)
+
+# %%
+integral_unalytic
+
+# %%
+integral_unalytic
+
+# %%
+vui = element_lib.Element_Linear_Polynomial_coef(0,0,0,1,1,0)
+vui
 
 
