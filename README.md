@@ -65,8 +65,8 @@ Part 4: Thiết lập điều kiện biên :
          Giải ma trận rút gọn
          
      Thử nghiệm với hàm f(x,y) = x(1-x)y(2-y)
-    ![output_analytic1](https://user-images.githubusercontent.com/29473579/169923384-1f3e9d55-77e0-4ebb-b242-a2712213bf0c.png)
-    ![output1](https://user-images.githubusercontent.com/29473579/169923415-285e6a61-a29b-4876-aa0e-a2ed0c63939b.png)
+   ![output1](https://user-images.githubusercontent.com/29473579/169923469-2276d94e-d50a-49d3-a6fa-46230a442c8c.png)
+   ![output_analytic1](https://user-images.githubusercontent.com/29473579/169923479-b55d0998-b561-4079-bf82-babd7fe572be.png)
 
 
 
