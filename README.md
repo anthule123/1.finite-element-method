@@ -64,7 +64,7 @@ Part 4: Thiết lập điều kiện biên :
          Ra được ma trận rút gọn
          Giải ma trận rút gọn
          
-     Thử nghiệm với hàm f(x,y) = x(1-x)y(2-y)
+     Thử nghiệm với hàm f(x,y) = x(1-x)y(1-y)
    ![output1](https://user-images.githubusercontent.com/29473579/169923469-2276d94e-d50a-49d3-a6fa-46230a442c8c.png)
    ![output_analytic1](https://user-images.githubusercontent.com/29473579/169923479-b55d0998-b561-4079-bf82-babd7fe572be.png)
 
