@@ -73,10 +73,10 @@ Part 4: Thiết lập điều kiện biên :
    ![output_analytic1](https://user-images.githubusercontent.com/29473579/169923479-b55d0998-b561-4079-bf82-babd7fe572be.png)
 ![anh10](https://user-images.githubusercontent.com/29473579/173335469-6bcecbf9-ced6-4901-a2b9-e7ab192fd59e.png)
 ![anh20](https://user-images.githubusercontent.com/29473579/173335498-5779a80f-900c-4652-b59a-8a5f6cc61aa8.png)
-
+![anh40](https://user-images.githubusercontent.com/29473579/173335585-ad282d31-d858-4a5f-8dc2-935cc8355d47.png)
 ![anh80](https://user-images.githubusercontent.com/29473579/173335403-340e0a41-ac60-4b6a-8b5d-dc87609bf15a.png)
 
 
  Part 5: Giải ma trận thưa
-            
+         
          
