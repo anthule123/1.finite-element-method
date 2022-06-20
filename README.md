@@ -1,8 +1,10 @@
 # finite-element-method
 FEM
-https://www.overleaf.com/9624233541qydrwpnntbtr
+Link cũ: https://www.overleaf.com/9624233541qydrwpnntbtr
 
 https://www.overleaf.com/9624233541qydrwpnntbtr
+
+Sau khi thẩm mĩ lại: https://www.overleaf.com/2772923663hmwwvxjtmtzs
 
 
 Bước 1: Vẽ hàm tuyến tính từng khúc từ [0,1] x [0,1] -> R
